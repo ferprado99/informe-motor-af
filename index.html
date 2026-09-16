@@ -13,7 +13,7 @@
 .shell{width:min(var(--max),calc(100% - 72px));margin:auto} .eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--pink)}
 .hero{min-height:96vh;display:grid;grid-template-columns:1.15fr .85fr;gap:7vw;align-items:end;padding:8vh 0 9vh;border-bottom:1px solid var(--line)}
 .hero h1{font-size:clamp(4.6rem,9vw,10rem);line-height:.86;letter-spacing:-.065em;margin:.18em 0 .22em;font-weight:760;max-width:9ch} .hero .intro{max-width:620px;padding-bottom:1.2rem} .hero .intro p{font-size:clamp(1.12rem,1.5vw,1.45rem);line-height:1.55;color:#3d4553} .hero .date{color:var(--muted);font-size:.88rem;margin-top:2rem}
-section{padding:9rem 0;border-bottom:1px solid var(--line)} .section-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:7vw} .sticky-title{align-self:start;position:sticky;top:42px} .sticky-title h2{font-size:clamp(3.1rem,5.8vw,6.8rem);line-height:.91;letter-spacing:-.055em;margin:.18em 0 0;max-width:8ch} .content{max-width:850px} .content>p{font-size:1.16rem;color:#353d49;margin:0 0 1.5rem}
+section{padding:9rem 0;border-bottom:1px solid var(--line)} .section-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:7vw} .sticky-title{align-self:start;position:static} .sticky-title h2{font-size:clamp(3.1rem,5.8vw,6.8rem);line-height:.91;letter-spacing:-.055em;margin:.18em 0 0;max-width:8ch} .content{max-width:850px} .content>p{font-size:1.16rem;color:#353d49;margin:0 0 1.5rem}
 .pull{margin:4rem 0;background:var(--navy);color:white;padding:clamp(2.2rem,4vw,4.4rem);border-radius:20px;font-size:clamp(1.8rem,3.1vw,3.5rem);line-height:1.06;letter-spacing:-.035em;font-weight:650}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem} .panel{border-top:3px solid var(--pink);padding:1.5rem 1.4rem 1.7rem;background:white} .panel h3{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 1rem;color:var(--pink)} .panel p{margin:0;color:#4b5360}
 .metric{display:grid;grid-template-columns:.48fr 1.52fr;gap:2rem;align-items:center;background:var(--soft);border-radius:24px;padding:clamp(2rem,4vw,4rem);margin-bottom:4rem} .metric strong{font-size:clamp(5rem,9vw,9rem);line-height:.8;color:var(--pink);letter-spacing:-.07em} .metric h3{font-size:1.4rem;margin:0 0 .5rem} .metric p{margin:0;color:var(--muted)}
@@ -31,720 +31,78 @@ body, p, li, .body, .copy, .brand p, .card p { font-weight: 500; }
 .metric-number { font-variant-numeric: tabular-nums; }
 
 /* v4 · CatAF como ventana 16:9 con recorrido vertical ligado al scroll */
-.cataf-scroll-frame{
-  width:100%;
-  margin-top:1.25rem;
-  border:1px solid rgba(32,38,53,.14);
-  border-radius:18px;
-  overflow:hidden;
-  background:#ebe9e3;
-  box-shadow:0 18px 48px rgba(32,38,53,.08);
-}
-.cataf-viewport{
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;
-  overflow:hidden;
-  background:#fff;
-}
-.cataf-scroll-image{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:auto;
-  max-width:none;
-  display:block;
-  will-change:transform;
-  transform:translate3d(0,0,0);
-}
-@media (max-width:760px){
-  .cataf-scroll-frame{border-radius:12px}
-  }
-@media (prefers-reduced-motion:reduce){
-  .cataf-scroll-image{will-change:auto}
-}
-
-
-
-
+.cataf-scroll-frame{width:100%;margin-top:1.25rem;border:1px solid rgba(32,38,53,.14);border-radius:18px;overflow:hidden;background:#ebe9e3;box-shadow:0 18px 48px rgba(32,38,53,.08)}
+.cataf-viewport{position:relative;width:100%;aspect-ratio:16 / 9;overflow:hidden;background:#fff}
+.cataf-scroll-image{position:absolute;top:0;left:0;width:100%;height:auto;max-width:none;display:block;will-change:transform;transform:translate3d(0,0,0)}
+@media (max-width:760px){.cataf-scroll-frame{border-radius:12px}}
+@media (prefers-reduced-motion:reduce){.cataf-scroll-image{will-change:auto}}
 
 /* v6 · escala tipográfica algo más contenida */
 h1{font-size:clamp(3.35rem,7.1vw,6.35rem)!important;line-height:.91!important}
 h2{font-size:clamp(2.15rem,4.15vw,3.65rem)!important;line-height:.98!important}
 h3{font-size:clamp(1.25rem,2vw,1.7rem)!important}
-@media (max-width:760px){
-  h1{font-size:clamp(2.75rem,13vw,4.35rem)!important}
-  h2{font-size:clamp(1.9rem,9vw,2.9rem)!important}
-}
-
-/* CatAF: el desplazamiento se controla por JS para detenerse exactamente al final. */
-.cataf-scroll-image{
-  animation:none!important;
-  transform:translate3d(0,0,0);
-  transition:none;
-}
-
-
-/* v7 · ajustes finos */
+@media (max-width:760px){h1{font-size:clamp(2.75rem,13vw,4.35rem)!important}h2{font-size:clamp(1.9rem,9vw,2.9rem)!important}}
+.cataf-scroll-image{animation:none!important;transform:translate3d(0,0,0);transition:none}
 html,body{background:#EEECE6!important}
-
-/* En los bloques editoriales de dos columnas, título y texto comienzan sobre la misma línea base visual. */
-.split,.editorial-split,.section-grid,.intro-grid,.two-col{
-  align-items:start;
-}
-.split > :first-child,
-.editorial-split > :first-child,
-.section-grid > :first-child,
-.intro-grid > :first-child,
-.two-col > :first-child{
-  align-self:start;
-}
-.split > :nth-child(2) > p:first-child,
-.editorial-split > :nth-child(2) > p:first-child,
-.section-grid > :nth-child(2) > p:first-child,
-.intro-grid > :nth-child(2) > p:first-child,
-.two-col > :nth-child(2) > p:first-child{
-  margin-top:0!important;
-}
-
-/* Corrección óptica: la primera línea del párrafo acompaña la primera línea del título. */
-@media (min-width:761px){
-  .section-copy,
-  .split-copy,
-  .editorial-copy{
-    padding-top:.12em;
-  }
-}
-
-
-
-
-
-/* v9 · baseline real: la compensación se calcula sobre la tipografía ya renderizada */
-@media (min-width:901px){
-  .hero,.section-grid,.state-box{align-items:start!important}
-}
-
-
-/* v12 · ritmo general más pausado */
-.reveal{
-  transition:
-    opacity 1.55s cubic-bezier(.22,.61,.36,1),
-    transform 1.75s cubic-bezier(.22,.61,.36,1)!important;
-}
-.reveal:nth-child(2){transition-delay:.14s!important}
-.reveal:nth-child(3){transition-delay:.28s!important}
-.reveal:nth-child(4){transition-delay:.42s!important}
-
-/* Elementos interactivos: también más suaves, sin volver torpe la respuesta. */
-a,button,.card,.brand-card,.metric,.quote{
-  transition-duration:.65s!important;
-  transition-timing-function:cubic-bezier(.22,.61,.36,1)!important;
-}
-
-
-/* v14 · nueva interfaz Debian, inmediatamente después de CatAF */
-.debian-ui-section{
-  margin-top:clamp(4rem,8vw,8rem);
-}
-.debian-ui-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
-  gap:clamp(2rem,6vw,7rem);
-  align-items:start;
-}
-.debian-ui-grid h2{
-  margin:0;
-}
-.debian-ui-copy p{
-  margin:0;
-}
-.debian-ui-shot{
-  margin:clamp(2.25rem,4vw,4rem) 0 0;
-  border:1px solid rgba(32,38,53,.14);
-  border-radius:18px;
-  overflow:hidden;
-  background:#fff;
-}
-.debian-ui-shot img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-@media (max-width:900px){
-  .debian-ui-grid{
-    grid-template-columns:1fr;
-    gap:1.4rem;
-  }
-  .debian-ui-shot{
-    border-radius:12px;
-  }
-}
-
-
-/* v15 · Debian vuelve a la retícula principal, fuera del bloque CatAF */
-.debian-ui-section{
-  margin-top:0!important;
-}
-.debian-ui-shell{
-  width:min(100% - 56px,var(--max));
-  margin-inline:auto;
-}
-.debian-ui-grid{
-  grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr)!important;
-  gap:7vw!important;
-}
-.debian-ui-shot{
-  width:100%;
-}
-@media(max-width:900px){
-  .debian-ui-shell{width:min(100% - 34px,var(--max))}
-  .debian-ui-grid{grid-template-columns:1fr!important;gap:1.4rem!important}
-}
-
-
-/* v16 · footer y firma */
-footer{
-  font-size:1.02rem!important;
-  line-height:1.55!important;
-}
-footer p,
-footer div,
-footer span{
-  font-size:inherit!important;
-}
-.footer-signature{
-  margin-top:1rem;
-  font-weight:600;
-  letter-spacing:.01em;
-}
-
-
-/* v17 · footer definitivo: sólo dos extremos */
-footer{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:space-between!important;
-  gap:2rem!important;
-}
-.footer-left,
-.footer-right{
-  margin:0!important;
-  padding:0!important;
-  font-size:inherit!important;
-  font-weight:600;
-}
-.footer-right{text-align:right}
-@media(max-width:640px){
-  footer{flex-wrap:wrap!important}
-  .footer-right{text-align:left}
-}
-
-
-/* v18 · estados de marcas como chips, con mayor presencia */
-.status-chip{
-  display:inline-flex!important;
-  align-items:center;
-  width:max-content;
-  min-height:31px;
-  padding:7px 12px!important;
-  border:1px solid rgba(32,38,53,.17);
-  border-radius:999px!important;
-  background:rgba(255,255,255,.56);
-  font-size:.84rem!important;
-  line-height:1!important;
-  font-weight:750!important;
-  letter-spacing:.045em!important;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
-.status-chip.closed{
-  background:rgba(33,126,92,.10)!important;
-  border-color:rgba(33,126,92,.23)!important;
-}
-.status-chip.active{
-  background:rgba(124,58,160,.10)!important;
-  border-color:rgba(124,58,160,.22)!important;
-}
-.brand-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
-
-/* v19 · el H2 de la sección Debian usa el mismo interletrado que el resto */
-.debian-ui-grid h2{
-  letter-spacing:inherit!important;
-}
-
-
-/* v20 · encabezado editorial del informe */
-.report-header{
-  width:100%;
-  border-bottom:1px solid rgba(32,38,53,.13);
-}
-.report-header-inner{
-  width:min(100% - 56px,var(--max));
-  margin-inline:auto;
-  padding:22px 0 20px;
-}
-.report-header-title{
-  max-width:76rem;
-  font-size:clamp(.86rem,1.05vw,1.02rem);
-  line-height:1.25;
-  font-weight:700;
-  letter-spacing:.075em;
-  text-transform:uppercase;
-  color:var(--ink);
-}
-@media(max-width:900px){
-  .report-header-inner{
-    width:min(100% - 34px,var(--max));
-    padding:17px 0 16px;
-  }
-  .report-header-title{
-    font-size:.78rem;
-    letter-spacing:.055em;
-  }
-}
-
-
-/* v21 · jerarquía de pesos de lectura */
-p{
-  font-weight:400!important;
-}
-.intro-paragraph{
-  font-weight:500!important;
-}
-
-/* Cierre destacado, sin caja ni fondo adicional */
-.final-emphasis{
-  margin-top:clamp(2rem,4vw,3.5rem)!important;
-  max-width:68rem;
-  font-size:clamp(1.35rem,2.15vw,2rem)!important;
-  line-height:1.32!important;
-  font-weight:500!important;
-  letter-spacing:-.012em;
-}
-.final-emphasis strong{
-  font-weight:500!important;
-}
-
-
-/* v23 · destacado de cambio de criterio: jerarquía intermedia, no pseudo-H2 */
-.criterion-callout{
-  background:rgba(25,42,70,.055)!important;
-  color:var(--ink)!important;
-  border:1px solid rgba(25,42,70,.10)!important;
-  border-left:3px solid rgba(25,42,70,.42)!important;
-  border-radius:16px!important;
-  padding:clamp(1.45rem,3vw,2.25rem)!important;
-  box-shadow:none!important;
-}
-.criterion-callout,
-.criterion-callout p{
-  font-size:clamp(1.18rem,1.75vw,1.48rem)!important;
-  line-height:1.42!important;
-  font-weight:500!important;
-  letter-spacing:-.006em!important;
-  max-width:72rem;
-}
-
-
-/* v24 · corrección exacta del tracking del H2 de interfaz */
-.debian-ui-grid h2{
-  letter-spacing:-.06em!important;
-}
-
-
-/* v25 · ajustes cromáticos y tipográficos */
-html,body{
-  background:#dedbd3!important;
-}
-body{
-  font-size:18px!important;
-}
-.section.state,
-section.state,
-.state{
-  background:#dcddd4!important;
-}
-
-
-/* v26 · texto de las tarjetas de marcas +2 px */
-.brand.reveal p,
-.brand.reveal.visible p{
-  font-size:20px!important;
-}
-
-
-/* v27 · texto de las tarjetas de marcas */
-.brand.reveal p,
-.brand.reveal.visible p{
-  font-size:16px!important;
-  color:#4a4a4a!important;
-}
-
-
-/* v28 · consistencia de párrafos principales */
-p{
-  font-size:1.3rem!important;
-}
-
-/* Se conservan las explicaciones de cada marca */
-.brand.reveal p,
-.brand.reveal.visible p{
-  font-size:16px!important;
-  color:#4a4a4a!important;
-}
-
-/* Se conservan las jerarquías especiales de los destacados */
-.criterion-callout,
-.criterion-callout p{
-  font-size:clamp(1.18rem,1.75vw,1.48rem)!important;
-}
-.final-emphasis{
-  font-size:clamp(1.35rem,2.15vw,2rem)!important;
-}
-
-/* ajuste · fondo sección state */
-.section.state,
-section.state,
-.state{
-  background:#c3c5b9!important;
-}
+.split,.editorial-split,.section-grid,.intro-grid,.two-col{align-items:start}
+.split > :first-child,.editorial-split > :first-child,.section-grid > :first-child,.intro-grid > :first-child,.two-col > :first-child{align-self:start}
+.split > :nth-child(2) > p:first-child,.editorial-split > :nth-child(2) > p:first-child,.section-grid > :nth-child(2) > p:first-child,.intro-grid > :nth-child(2) > p:first-child,.two-col > :nth-child(2) > p:first-child{margin-top:0!important}
+@media (min-width:761px){.section-copy,.split-copy,.editorial-copy{padding-top:.12em}}
+@media (min-width:901px){.hero,.section-grid,.state-box{align-items:start!important}}
+.reveal{transition:opacity 1.55s cubic-bezier(.22,.61,.36,1),transform 1.75s cubic-bezier(.22,.61,.36,1)!important}
+.reveal:nth-child(2){transition-delay:.14s!important}.reveal:nth-child(3){transition-delay:.28s!important}.reveal:nth-child(4){transition-delay:.42s!important}
+a,button,.card,.brand-card,.metric,.quote{transition-duration:.65s!important;transition-timing-function:cubic-bezier(.22,.61,.36,1)!important}
+.debian-ui-section{margin-top:0!important}.debian-ui-shell{width:min(100% - 56px,var(--max));margin-inline:auto}.debian-ui-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr)!important;gap:7vw!important;align-items:start}.debian-ui-grid h2{margin:0;letter-spacing:-.06em!important}.debian-ui-copy p{margin:0}.debian-ui-shot{width:100%;margin:clamp(2.25rem,4vw,4rem) 0 0;border:1px solid rgba(32,38,53,.14);border-radius:18px;overflow:hidden;background:#fff}.debian-ui-shot img{width:100%;height:auto;display:block}
+@media(max-width:900px){.debian-ui-shell{width:min(100% - 34px,var(--max))}.debian-ui-grid{grid-template-columns:1fr!important;gap:1.4rem!important}.debian-ui-shot{border-radius:12px}}
+footer{font-size:1.02rem!important;line-height:1.55!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:2rem!important}footer p,footer div,footer span{font-size:inherit!important}.footer-left,.footer-right{margin:0!important;padding:0!important;font-size:inherit!important;font-weight:600}.footer-right{text-align:right}@media(max-width:640px){footer{flex-wrap:wrap!important}.footer-right{text-align:left}}
+.status-chip{display:inline-flex!important;align-items:center;width:max-content;min-height:31px;padding:7px 12px!important;border:1px solid rgba(32,38,53,.17);border-radius:999px!important;background:rgba(255,255,255,.56);font-size:.84rem!important;line-height:1!important;font-weight:750!important;letter-spacing:.045em!important;text-transform:uppercase;white-space:nowrap}.status-chip.closed{background:rgba(33,126,92,.10)!important;border-color:rgba(33,126,92,.23)!important}.status-chip.active{background:rgba(124,58,160,.10)!important;border-color:rgba(124,58,160,.22)!important}.brand-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.report-header{width:100%;border-bottom:1px solid rgba(32,38,53,.13)}.report-header-inner{width:min(100% - 56px,var(--max));margin-inline:auto;padding:22px 0 20px}.report-header-title{max-width:76rem;font-size:clamp(.86rem,1.05vw,1.02rem);line-height:1.25;font-weight:700;letter-spacing:.075em;text-transform:uppercase;color:var(--ink)}@media(max-width:900px){.report-header-inner{width:min(100% - 34px,var(--max));padding:17px 0 16px}.report-header-title{font-size:.78rem;letter-spacing:.055em}}
+p{font-weight:400!important;font-size:1.3rem!important}.intro-paragraph{font-weight:500!important}.final-emphasis{margin-top:clamp(2rem,4vw,3.5rem)!important;max-width:68rem;font-size:clamp(1.35rem,2.15vw,2rem)!important;line-height:1.32!important;font-weight:500!important;letter-spacing:-.012em}.final-emphasis strong{font-weight:500!important}
+.criterion-callout{background:rgba(25,42,70,.055)!important;color:var(--ink)!important;border:1px solid rgba(25,42,70,.10)!important;border-left:3px solid rgba(25,42,70,.42)!important;border-radius:16px!important;padding:clamp(1.45rem,3vw,2.25rem)!important;box-shadow:none!important}.criterion-callout,.criterion-callout p{font-size:clamp(1.18rem,1.75vw,1.48rem)!important;line-height:1.42!important;font-weight:500!important;letter-spacing:-.006em!important;max-width:72rem}
+html,body{background:#dedbd3!important}body{font-size:18px!important}.section.state,section.state,.state{background:#c3c5b9!important}.brand.reveal p,.brand.reveal.visible p{font-size:16px!important;color:#4a4a4a!important}
 </style>
 </head>
 <body>
-
-<header class="report-header">
-  <div class="report-header-inner">
-    <div class="report-header-title">INFORME: CÓMO AVANZAMOS CON EL DESARROLLO DEL MOTOR DE BÚSQUEDA PARA LA TIENDA ONLINE</div>
-  </div>
-</header>
-
-<div class="shell">
-  <header class="hero">
-    <div class="reveal">
-      <div class="eyebrow">Informe de avance · Almacén de Fragancias</div>
-      <h1>Aprender el catálogo para buscar mejor.</h1>
-    </div>
-    <div class="intro reveal delay1">
-      <p class="intro-paragraph">Durante las últimas semanas, el desarrollo avanzó mediante sucesivas pruebas, correcciones y análisis de marcas concretas del catálogo de Almacén de Fragancias. Este recorrido permitió identificar qué dificultades aparecen en la práctica, revisar enfoques iniciales y acumular conocimiento reutilizable sobre cómo cada marca organiza y publica sus productos.</p>
-      <p class="intro-paragraph">El proceso no fue lineal: algunas hipótesis funcionaron, otras tuvieron que descartarse y varias marcas obligaron a cambiar la forma de abordar el problema.</p>
-    </div>
-  </header>
-</div>
-
-<section>
-  <div class="shell section-grid">
-    <div class="sticky-title reveal">
-      <div class="eyebrow">01 · El cambio central</div>
-      <h2>De buscar productos a entender marcas.</h2>
-    </div>
-    <div class="content reveal delay1">
-      <p>Al comienzo, el problema parecía principalmente de identificación: relacionar cada producto existente en Odoo con su equivalente exacto en la web. Las pruebas mostraron que la dificultad mayor aparecía antes: <strong>encontrar la fuente adecuada y entender cómo cada marca organiza su catálogo.</strong></p>
-      <p>Un mismo producto puede aparecer con nombres distintos, códigos regionales, presentaciones históricas, variantes agrupadas o información repartida entre varias páginas. Incluso una fuente oficial puede ser correcta pero insuficiente para el nivel de detalle que necesita el catálogo de AF.</p>
-      <div class="pull criterion-callout">El principal cambio de criterio fue dejar de intentar que el buscador pruebe cada vez más cosas y empezar por entender cómo organiza sus productos cada marca.</div>
-      <div class="split">
-        <div class="panel reveal"><h3>Lo que no funcionó</h3><p>Agregar búsquedas y fuentes de forma indiscriminada. Aumentaba el ruido, consumía intentos y podía producir candidatos plausibles pero incorrectos.</p></div>
-        <div class="panel reveal delay1"><h3>Lo que empezó a funcionar</h3><p>Trabajar marca por marca: líneas, familias, variantes, presentaciones, códigos, catálogos oficiales y fuentes secundarias realmente útiles.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="shell section-grid">
-    <div class="sticky-title reveal">
-      <div class="eyebrow">02 · Iteración</div>
-      <h2>Probar, fallar, corregir, conservar.</h2>
-    </div>
-    <div class="content reveal delay1">
-      <div class="metric">
-        <strong class="metric-number" data-target="87">0+</strong>
-        <div><h3>iteraciones y builds de prueba acumulados</h3><p>No son 87 versiones completas de la aplicación. Incluyen pruebas focalizadas, pequeñas correcciones, experimentos, hipótesis descartadas, regresiones y rondas específicas por marca.</p></div>
-      </div>
-      <p>El número sirve sobre todo para mostrar la intensidad del proceso. Muchas mejoras surgieron de encontrar un caso que parecía aislado y comprobar después que revelaba una regla más general.</p>
-      <p>También hubo pruebas que debieron invalidarse: fuentes que parecían prometedoras pero aportaban poco, búsquedas que ampliaban cobertura a costa de precisión o resultados afectados por problemas técnicos que no debían convertirse en reglas del sistema.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="shell section-grid">
-    <div class="sticky-title reveal">
-      <div class="eyebrow">03 · Marcas trabajadas</div>
-      <h2>Cada marca enseña algo distinto.</h2>
-    </div>
-    <div class="content reveal delay1">
-      <p><strong>“Marca cerrada”</strong> significa que, para los productos que actualmente existen en AF, ya se relevaron y probaron sus principales fuentes, estructura y reglas hasta un nivel suficiente para dejar de trabajar específicamente sobre ella. Puede reabrirse si aparece nueva información o un problema.</p>
-      <div class="brands">
-        <article class="brand reveal"><div class="brand-top"><h3>Pink Mask</h3><span class="status status-chip closed">CERRADA</span></div><p>Fuentes, estructura y reglas trabajadas a un nivel suficientemente sólido para el inventario actual.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Ceras Collage</h3><span class="status status-chip closed">CERRADA</span></div><p>Se distinguieron productos actuales, otras presentaciones e históricos, combinando fuentes web y documentación oficial.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Framesi</h3><span class="status status-chip closed">CERRADA</span></div><p>Mostró que el sitio oficial puede no alcanzar cuando líneas, tonos o variantes no están publicadas con el detalle necesario.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>La Pasionaria</h3><span class="status status-chip closed">CERRADA</span></div><p>Mostró el valor de partir de un catálogo conocido de la marca en lugar de depender de búsquedas generales; ese trabajo quedó consolidado para el inventario actual de AF.</p></article>
+<header class="report-header"><div class="report-header-inner"><div class="report-header-title">INFORME: CÓMO AVANZAMOS CON EL DESARROLLO DEL MOTOR DE BÚSQUEDA PARA LA TIENDA ONLINE</div></div></header>
+<div class="shell"><header class="hero"><div class="reveal"><div class="eyebrow">Informe de avance · Almacén de Fragancias</div><h1>Aprender el catálogo para buscar mejor.</h1></div><div class="intro reveal delay1"><p class="intro-paragraph">Durante las últimas semanas, el desarrollo avanzó mediante sucesivas pruebas, correcciones y análisis de marcas concretas del catálogo de Almacén de Fragancias. Este recorrido permitió identificar qué dificultades aparecen en la práctica, revisar enfoques iniciales y acumular conocimiento reutilizable sobre cómo cada marca organiza y publica sus productos.</p><p class="intro-paragraph">El proceso no fue lineal: algunas hipótesis funcionaron, otras tuvieron que descartarse y varias marcas obligaron a cambiar la forma de abordar el problema.</p></div></header></div>
+<section><div class="shell section-grid"><div class="sticky-title reveal"><div class="eyebrow">01 · El cambio central</div><h2>De buscar productos a entender marcas.</h2></div><div class="content reveal delay1"><p>Al comienzo, el problema parecía principalmente de identificación: relacionar cada producto existente en Odoo con su equivalente exacto en la web. Las pruebas mostraron que la dificultad mayor aparecía antes: <strong>encontrar la fuente adecuada y entender cómo cada marca organiza su catálogo.</strong></p><p>Un mismo producto puede aparecer con nombres distintos, códigos regionales, presentaciones históricas, variantes agrupadas o información repartida entre varias páginas. Incluso una fuente oficial puede ser correcta pero insuficiente para el nivel de detalle que necesita el catálogo de AF.</p><div class="pull criterion-callout">El principal cambio de criterio fue dejar de intentar que el buscador pruebe cada vez más cosas y empezar por entender cómo organiza sus productos cada marca.</div><div class="split"><div class="panel reveal"><h3>Lo que no funcionó</h3><p>Agregar búsquedas y fuentes de forma indiscriminada. Aumentaba el ruido, consumía intentos y podía producir candidatos plausibles pero incorrectos.</p></div><div class="panel reveal delay1"><h3>Lo que empezó a funcionar</h3><p>Trabajar marca por marca: líneas, familias, variantes, presentaciones, códigos, catálogos oficiales y fuentes secundarias realmente útiles.</p></div></div></div></div></section>
+<section><div class="shell section-grid"><div class="sticky-title reveal"><div class="eyebrow">02 · Iteración</div><h2>Probar, fallar, corregir, conservar.</h2></div><div class="content reveal delay1"><div class="metric"><strong class="metric-number" data-target="87">0+</strong><div><h3>iteraciones y builds de prueba acumulados</h3><p>No son 87 versiones completas de la aplicación. Incluyen pruebas focalizadas, pequeñas correcciones, experimentos, hipótesis descartadas, regresiones y rondas específicas por marca.</p></div></div><p>El número sirve sobre todo para mostrar la intensidad del proceso. Muchas mejoras surgieron de encontrar un caso que parecía aislado y comprobar después que revelaba una regla más general.</p><p>También hubo pruebas que debieron invalidarse: fuentes que parecían prometedoras pero aportaban poco, búsquedas que ampliaban cobertura a costa de precisión o resultados afectados por problemas técnicos que no debían convertirse en reglas del sistema.</p></div></div></section>
+<section><div class="shell section-grid"><div class="sticky-title reveal"><div class="eyebrow">03 · Marcas trabajadas</div><h2>Cada marca enseña algo distinto.</h2></div><div class="content reveal delay1"><p><strong>“Marca cerrada”</strong> significa que, para los productos que actualmente existen en AF, ya se relevaron y probaron sus principales fuentes, estructura y reglas hasta un nivel suficiente para dejar de trabajar específicamente sobre ella. Puede reabrirse si aparece nueva información o un problema.</p><div class="brands">
+<article class="brand reveal"><div class="brand-top"><h3>Pink Mask</h3><span class="status status-chip closed">CERRADA</span></div><p>Fuentes, estructura y reglas trabajadas a un nivel suficientemente sólido para el inventario actual.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Ceras Collage</h3><span class="status status-chip closed">CERRADA</span></div><p>Se distinguieron productos actuales, otras presentaciones e históricos, combinando fuentes web y documentación oficial.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Framesi</h3><span class="status status-chip closed">CERRADA</span></div><p>Mostró que el sitio oficial puede no alcanzar cuando líneas, tonos o variantes no están publicadas con el detalle necesario.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>La Pasionaria</h3><span class="status status-chip closed">CERRADA</span></div><p>Mostró el valor de partir de un catálogo conocido de la marca en lugar de depender de búsquedas generales; ese trabajo quedó consolidado para el inventario actual de AF.</p></article>
 <article class="brand reveal"><div class="brand-top"><h3>SISCOM</h3><span class="status status-chip closed">CERRADA</span></div><p>El análisis permitió pasar de productos aislados a una lectura de su arquitectura comercial: Rayito de Sol, Tortulan, Naturaloe, Biuty, Noveltex, Mary Stuart y Sapolán Dubarry. Esta estructura puede reutilizarse para orientar búsquedas y comprender mejor el catálogo de AF.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>WAHL</h3><span class="status status-chip">TRABAJO PROFUNDO</span></div><p>Los modelos históricos y regionales demostraron que una única fuente argentina no cubre todo el universo de productos.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>WMARK</h3><span class="status status-chip">INVESTIGADA</span></div><p>La cobertura inicial fue limitada y obligó a ampliar fuentes y búsquedas basadas en modelos.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Kostume</h3><span class="status status-chip">TRABAJO PROFUNDO</span></div><p>Productos históricos, fuentes caídas y equivalencias de coloración/presentación exigieron mayor investigación.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>NAT</h3><span class="status status-chip">TRABAJADA</span></div><p>Se fijaron reglas para distinguir unidad, caja y pack cuando la publicación comercial puede inducir a error.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Kemei</h3><span class="status status-chip">INVESTIGADA</span></div><p>Se localizaron fuentes específicas y alternativas útiles para ampliar la cobertura.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Jessamy</h3><span class="status status-chip">INVESTIGADA</span></div><p>Se incorporó una fuente específica de marca para mejorar la identificación.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Thelma y Louise</h3><span class="status status-chip active">EN TRABAJO</span></div><p>Es la marca actualmente en trabajo y está requiriendo un análisis especialmente profundo: códigos propios, variantes, packs y páginas que agrupan distintas opciones obligan a reconstruir con cuidado la estructura del catálogo antes de relacionar cada producto con seguridad.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Tingere</h3><span class="status status-chip">ANALIZADA</span></div><p>Enseñó que una fuente oficial conocida puede no estar operativa y no conviene seguir consumiendo intentos allí.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Silkey</h3><span class="status status-chip">INVESTIGADA</span></div><p>Había páginas oficiales útiles que el enfoque inicial no conseguía relacionar correctamente con AF.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Enchen</h3><span class="status status-chip">TRABAJADA</span></div><p>Se exploraron fuentes alternativas; algunas pruebas iniciales debieron descartarse por problemas técnicos.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Depimiel</h3><span class="status status-chip">ANALIZADA</span></div><p>Las fuentes secundarias resultaron útiles, aunque aparecieron inconsistencias entre resultados, URLs e imágenes.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>iBeauty</h3><span class="status status-chip">ANALIZADA</span></div><p>La cobertura inicial fue limitada y demasiado genérica, lo que exigió refinar criterios.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Curl Girl</h3><span class="status status-chip">ANALIZADA</span></div><p>Existían páginas online aprovechables que el enfoque inicial no estaba explotando.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Dior</h3><span class="status status-chip">TRABAJADA</span></div><p>El sitio local aportó descripción, aunque no siempre toda la información complementaria.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Dolce &amp; Gabbana</h3><span class="status status-chip">INVESTIGADA</span></div><p>Formó parte del análisis de perfumería, donde la cobertura inicial de información fue baja.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Carolina Herrera</h3><span class="status status-chip">INVESTIGADA</span></div><p>Sirvió para estudiar límites de cobertura en perfumería y fuentes disponibles.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Calvin Klein</h3><span class="status status-chip">INVESTIGADA</span></div><p>Otro caso de perfumería donde fue necesario revisar fuentes y estrategia de búsqueda.</p></article>
-        <article class="brand reveal"><div class="brand-top"><h3>Artez Westerley</h3><span class="status status-chip">TRABAJADA</span></div><p>Se ajustaron nombres y consultas para reducir falsos positivos y recuperar productos que las búsquedas iniciales omitían.</p></article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="shell section-grid">
-    <div class="sticky-title reveal">
-      <div class="eyebrow">04 · Aprendizajes</div>
-      <h2>Reglas que ya cambiaron el motor.</h2>
-    </div>
-    <div class="content reveal delay1">
-      <div class="split">
-        <div class="panel"><h3>Fuente correcta ≠ fuente suficiente</h3><p>Una web oficial puede confirmar el producto pero no contener la variante, presentación o detalle necesario.</p></div>
-        <div class="panel"><h3>Precisión antes que relleno</h3><p>Es preferible dejar un producto pendiente antes que completar el catálogo con otra variante que parece correcta.</p></div>
-        <div class="panel"><h3>Descripción e imagen son problemas separados</h3><p>Una fuente puede aportar una descripción válida y otra una imagen mejor. No deben quedar artificialmente atadas.</p></div>
-        <div class="panel"><h3>El EAN ayuda, pero no decide todo</h3><p>Un código exacto puede confirmar identidad sin garantizar que la foto publicada sea la correcta o la más actual.</p></div>
-      </div>
-      <p style="margin-top:3rem">El resultado es un motor menos orientado a “encontrar algo” y más orientado a presentar información que pueda defenderse frente al producto real existente en AF.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="shell cataf">
-    <div class="cataf-copy reveal">
-      <div class="eyebrow">05 · Visión global</div>
-      <h2>CatAF ayuda a decidir dónde trabajar.</h2>
-      <p>Como complemento del motor se desarrolló CatAF, una herramienta de lectura y análisis del catálogo de Almacén de Fragancias.</p>
-      <p>Su utilidad en este proyecto es aportar una visión global y sectorizada: distribución por marcas y categorías, concentración del inventario y sectores donde falta información. Esto permite definir prioridades con una lectura del catálogo completo y no únicamente producto por producto.</p>
-      <p>La marca <strong>“Prioritaria web”</strong> surgió de la reunión de trabajo entre Fer y Lucas y funciona como criterio interno de planificación; no modifica Odoo.</p>
-    </div>
-    <figure class="reveal delay1">
-      <div class="cataf-scroll-frame">
-        <div class="cataf-viewport" id="catafViewport">
-          <img id="catafScrollImage" class="cataf-scroll-image" src="assets/cataf-dashboard.png" alt="Vista del dashboard CatAF">
-        </div>
-      </div>
-    </figure>
-  </div>
-</section>
-
-<section class="debian-ui-section">
-  <div class="debian-ui-shell">
-    <div class="debian-ui-grid">
-      <div class="reveal">
-        <div class="eyebrow">06 · Interfaz</div>
-        <h2>Una interfaz pensada para la próxima etapa.</h2>
-      </div>
-      <div class="debian-ui-copy reveal delay1">
-        <p><strong>En paralelo, se está trabajando en la preparación de una nueva interfaz para la futura implementación en Debian.</strong> La migración desde Windows no es directa: se están revisando la organización y las funcionalidades para que el motor resulte realmente útil, intuitivo y adecuado al trabajo cotidiano.</p>
-      </div>
-    </div>
-    <figure class="debian-ui-shot reveal">
-      <img src="assets/interfaz-debian.png" alt="Vista de la interfaz en preparación para Debian">
-    </figure>
-  </div>
-</section>
-
-<section class="state">
-  <div class="shell state-box">
-    <div class="reveal">
-      <div class="eyebrow">07 · Punto actual</div>
-      <h2>Un sistema todavía en desarrollo, pero con más criterio acumulado.</h2>
-    </div>
-    <div class="state-copy reveal delay1">
-      <p>El desarrollo continúa en instancia de trabajo y validación. Las mejoras del motor todavía no fueron trasladadas a una instancia de pruebas de la aplicación montada en Debian/AWS; hasta ahora el foco estuvo en desarrollar, probar y corregir el motor y sus reglas antes de avanzar a esa etapa.</p>
-      <p>El trabajo por marca está generando además una capa de conocimiento comercial y de catálogo que puede reutilizarse: relaciones entre líneas, familias, variantes, fuentes confiables y formas particulares de publicación.</p>
-      <div class="closed-note"><strong>Pink Mask, Ceras Collage, Framesi, La Pasionaria y SISCOM están consideradas cerradas.</strong> El trabajo continúa sobre otras marcas y sobre la integración de este conocimiento en el funcionamiento general del motor.</div>
-      <p class="final-emphasis">El objetivo inmediato es continuar este proceso sobre otras marcas, acumulando conocimiento reutilizable y trasladando gradualmente lo aprendido al motor. La automatización busca reducir investigación manual y presentar mejores opciones; la decisión final sobre información sensible o dudosa sigue quedando en manos de Sandra.</p>
-    </div>
-  </div>
-</section>
-
-<div class="shell">
-  <footer class="reveal">
-    <div class="footer-left">Almacén de Fragancias · Informe de avance</div>
-    <div class="footer-right">Desarrollo en curso - Fer Prado</div>
-  </footer>
-</div>
-
+<article class="brand reveal"><div class="brand-top"><h3>WAHL</h3><span class="status status-chip">TRABAJO PROFUNDO</span></div><p>Los modelos históricos y regionales demostraron que una única fuente argentina no cubre todo el universo de productos.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>WMARK</h3><span class="status status-chip">INVESTIGADA</span></div><p>La cobertura inicial fue limitada y obligó a ampliar fuentes y búsquedas basadas en modelos.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Kostume</h3><span class="status status-chip">TRABAJO PROFUNDO</span></div><p>Productos históricos, fuentes caídas y equivalencias de coloración/presentación exigieron mayor investigación.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>NAT</h3><span class="status status-chip">TRABAJADA</span></div><p>Se fijaron reglas para distinguir unidad, caja y pack cuando la publicación comercial puede inducir a error.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Kemei</h3><span class="status status-chip">INVESTIGADA</span></div><p>Se localizaron fuentes específicas y alternativas útiles para ampliar la cobertura.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Jessamy</h3><span class="status status-chip">INVESTIGADA</span></div><p>Se incorporó una fuente específica de marca para mejorar la identificación.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Thelma y Louise</h3><span class="status status-chip active">EN TRABAJO</span></div><p>Es la marca actualmente en trabajo y está requiriendo un análisis especialmente profundo: códigos propios, variantes, packs y páginas que agrupan distintas opciones obligan a reconstruir con cuidado la estructura del catálogo antes de relacionar cada producto con seguridad.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Tingere</h3><span class="status status-chip">ANALIZADA</span></div><p>Enseñó que una fuente oficial conocida puede no estar operativa y no conviene seguir consumiendo intentos allí.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Silkey</h3><span class="status status-chip">INVESTIGADA</span></div><p>Había páginas oficiales útiles que el enfoque inicial no conseguía relacionar correctamente con AF.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Enchen</h3><span class="status status-chip">TRABAJADA</span></div><p>Se exploraron fuentes alternativas; algunas pruebas iniciales debieron descartarse por problemas técnicos.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Depimiel</h3><span class="status status-chip">ANALIZADA</span></div><p>Las fuentes secundarias resultaron útiles, aunque aparecieron inconsistencias entre resultados, URLs e imágenes.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>iBeauty</h3><span class="status status-chip">ANALIZADA</span></div><p>La cobertura inicial fue limitada y demasiado genérica, lo que exigió refinar criterios.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Curl Girl</h3><span class="status status-chip">ANALIZADA</span></div><p>Existían páginas online aprovechables que el enfoque inicial no estaba explotando.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Dior</h3><span class="status status-chip">TRABAJADA</span></div><p>El sitio local aportó descripción, aunque no siempre toda la información complementaria.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Dolce &amp; Gabbana</h3><span class="status status-chip">INVESTIGADA</span></div><p>Formó parte del análisis de perfumería, donde la cobertura inicial de información fue baja.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Carolina Herrera</h3><span class="status status-chip">INVESTIGADA</span></div><p>Sirvió para estudiar límites de cobertura en perfumería y fuentes disponibles.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Calvin Klein</h3><span class="status status-chip">INVESTIGADA</span></div><p>Otro caso de perfumería donde fue necesario revisar fuentes y estrategia de búsqueda.</p></article>
+<article class="brand reveal"><div class="brand-top"><h3>Artez Westerley</h3><span class="status status-chip">TRABAJADA</span></div><p>Se ajustaron nombres y consultas para reducir falsos positivos y recuperar productos que las búsquedas iniciales omitían.</p></article>
+</div></div></div></section>
+<section><div class="shell section-grid"><div class="sticky-title reveal"><div class="eyebrow">04 · Aprendizajes</div><h2>Reglas que ya cambiaron el motor.</h2></div><div class="content reveal delay1"><div class="split"><div class="panel"><h3>Fuente correcta ≠ fuente suficiente</h3><p>Una web oficial puede confirmar el producto pero no contener la variante, presentación o detalle necesario.</p></div><div class="panel"><h3>Precisión antes que relleno</h3><p>Es preferible dejar un producto pendiente antes que completar el catálogo con otra variante que parece correcta.</p></div><div class="panel"><h3>Descripción e imagen son problemas separados</h3><p>Una fuente puede aportar una descripción válida y otra una imagen mejor. No deben quedar artificialmente atadas.</p></div><div class="panel"><h3>El EAN ayuda, pero no decide todo</h3><p>Un código exacto puede confirmar identidad sin garantizar que la foto publicada sea la correcta o la más actual.</p></div></div><p style="margin-top:3rem">El resultado es un motor menos orientado a “encontrar algo” y más orientado a presentar información que pueda defenderse frente al producto real existente en AF.</p></div></div></section>
+<section><div class="shell cataf"><div class="cataf-copy reveal"><div class="eyebrow">05 · Visión global</div><h2>CatAF ayuda a decidir dónde trabajar.</h2><p>Como complemento del motor se desarrolló CatAF, una herramienta de lectura y análisis del catálogo de Almacén de Fragancias.</p><p>Su utilidad en este proyecto es aportar una visión global y sectorizada: distribución por marcas y categorías, concentración del inventario y sectores donde falta información. Esto permite definir prioridades con una lectura del catálogo completo y no únicamente producto por producto.</p><p>La marca <strong>“Prioritaria web”</strong> surgió de la reunión de trabajo entre Fer y Lucas y funciona como criterio interno de planificación; no modifica Odoo.</p></div><figure class="reveal delay1"><div class="cataf-scroll-frame"><div class="cataf-viewport" id="catafViewport"><img id="catafScrollImage" class="cataf-scroll-image" src="assets/cataf-dashboard.png" alt="Vista del dashboard CatAF"></div></div></figure></div></section>
+<section class="debian-ui-section"><div class="debian-ui-shell"><div class="debian-ui-grid"><div class="reveal"><div class="eyebrow">06 · Interfaz</div><h2>Una interfaz pensada para la próxima etapa.</h2></div><div class="debian-ui-copy reveal delay1"><p><strong>En paralelo, se está trabajando en la preparación de una nueva interfaz para la futura implementación en Debian.</strong> La migración desde Windows no es directa: se están revisando la organización y las funcionalidades para que el motor resulte realmente útil, intuitivo y adecuado al trabajo cotidiano.</p></div></div><figure class="debian-ui-shot reveal"><img src="assets/interfaz-debian.png" alt="Vista de la interfaz en preparación para Debian"></figure></div></section>
+<section class="state"><div class="shell state-box"><div class="reveal"><div class="eyebrow">07 · Punto actual</div><h2>Un sistema todavía en desarrollo, pero con más criterio acumulado.</h2></div><div class="state-copy reveal delay1"><p>El desarrollo continúa en instancia de trabajo y validación. Las mejoras del motor todavía no fueron trasladadas a una instancia de pruebas de la aplicación montada en Debian/AWS; hasta ahora el foco estuvo en desarrollar, probar y corregir el motor y sus reglas antes de avanzar a esa etapa.</p><p>El trabajo por marca está generando además una capa de conocimiento comercial y de catálogo que puede reutilizarse: relaciones entre líneas, familias, variantes, fuentes confiables y formas particulares de publicación.</p><div class="closed-note"><strong>Pink Mask, Ceras Collage, Framesi, La Pasionaria y SISCOM están consideradas cerradas.</strong> El trabajo continúa sobre otras marcas y sobre la integración de este conocimiento en el funcionamiento general del motor.</div><p class="final-emphasis">El objetivo inmediato es continuar este proceso sobre otras marcas, acumulando conocimiento reutilizable y trasladando gradualmente lo aprendido al motor. La automatización busca reducir investigación manual y presentar mejores opciones; la decisión final sobre información sensible o dudosa sigue quedando en manos de Sandra.</p></div></div></section>
+<div class="shell"><footer class="reveal"><div class="footer-left">Almacén de Fragancias · Informe de avance</div><div class="footer-right">Desarrollo en curso - Fer Prado</div></footer></div>
 <script>
-// Reveal progresivo, con fallback visible si IntersectionObserver no existe.
 const revealEls=[...document.querySelectorAll('.reveal')];
-if('IntersectionObserver' in window){
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})
-  },{threshold:.08});
-  revealEls.forEach(el=>io.observe(el));
-}else{
-  revealEls.forEach(el=>el.classList.add('visible'));
-}
-
-// Contador rápido 0 → 87 al entrar en pantalla.
-const metricNumber=document.querySelector('.metric-number');
-function runMetricCounter(){
-  if(!metricNumber || metricNumber.dataset.counted==='1') return;
-  metricNumber.dataset.counted='1';
-  const target=Number(metricNumber.dataset.target||87);
-  const duration=850;
-  const start=performance.now();
-  function tick(now){
-    const t=Math.min(1,(now-start)/duration);
-    const eased=1-Math.pow(1-t,3);
-    metricNumber.textContent=Math.floor(target*eased)+'+';
-    if(t<1) requestAnimationFrame(tick); else metricNumber.textContent=target+'+';
-  }
-  requestAnimationFrame(tick);
-}
-if(metricNumber){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    metricNumber.textContent=(metricNumber.dataset.target||87)+'+';
-  }else if('IntersectionObserver' in window){
-    const metricObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{if(entry.isIntersecting){runMetricCounter();metricObserver.disconnect();}})
-    },{threshold:.35});
-    metricObserver.observe(metricNumber);
-  }else runMetricCounter();
-}
-
-// CatAF: recorrido autónomo. Empieza en cuanto la ventana 16:9 queda completamente visible.
-const catafViewport=document.getElementById('catafViewport');
-const catafImage=document.getElementById('catafScrollImage');
-let catafStarted=false;
-
-function catafEase(t){
-  // easing fuerte y simétrico: acelera/desacelera de forma visible en ambos sentidos
-  return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
-}
-
-function startCatAFAuto(){
-  if(catafStarted || !catafViewport || !catafImage) return;
-  catafStarted=true;
-
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    catafImage.style.transform='translate3d(0,0,0)';
-    return;
-  }
-
-  const duration=86000;
-  const topPause=.075;
-  const bottomPause=.075;
-  let startTime=null;
-
-  function frame(now){
-    if(startTime===null) startTime=now;
-    const cycle=((now-startTime)%duration)/duration;
-    const travel=Math.max(0,catafImage.getBoundingClientRect().height-catafViewport.getBoundingClientRect().height);
-    let progress;
-
-    if(cycle<topPause){
-      progress=0;
-    }else if(cycle<.5-bottomPause){
-      const local=(cycle-topPause)/(.5-bottomPause-topPause);
-      progress=catafEase(local);
-    }else if(cycle<.5+bottomPause){
-      progress=1;
-    }else if(cycle<1-topPause){
-      const local=(cycle-(.5+bottomPause))/((1-topPause)-(.5+bottomPause));
-      progress=1-catafEase(local);
-    }else{
-      progress=0;
-    }
-
-    catafImage.style.transform=`translate3d(0,${-(travel*progress)}px,0)`;
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-}
-
-function checkCatAFFullyVisible(){
-  if(catafStarted || !catafViewport) return;
-  const r=catafViewport.getBoundingClientRect();
-  const vh=window.innerHeight||document.documentElement.clientHeight;
-  if(r.top>=0 && r.bottom<=vh){
-    startCatAFAuto();
-  }
-}
-
-if(catafImage){
-  if(catafImage.complete) checkCatAFFullyVisible();
-  else catafImage.addEventListener('load',checkCatAFFullyVisible,{once:true});
-}
-window.addEventListener('scroll',checkCatAFFullyVisible,{passive:true});
-window.addEventListener('resize',checkCatAFFullyVisible);
-window.addEventListener('load',checkCatAFFullyVisible,{once:true});
-checkCatAFFullyVisible();
-
-// Alineación tipográfica: mide la línea base real de la primera línea en ambos lados.
-function ensureBaselineMarker(el,cls){
-  if(!el) return null;
-  let marker=el.querySelector(':scope > .'+cls);
-  if(marker) return marker;
-  marker=document.createElement('span');
-  marker.className=cls;
-  marker.setAttribute('aria-hidden','true');
-  marker.style.cssText='display:inline-block;width:0;height:0;padding:0;margin:0;border:0;vertical-align:baseline;';
-  el.insertBefore(marker,el.firstChild);
-  return marker;
-}
-
-function alignPair(title,para,right){
-  if(!title||!para||!right) return;
-  right.style.paddingTop='0px';
-  if(window.innerWidth<901) return;
-  const tm=ensureBaselineMarker(title,'baseline-title-marker');
-  const pm=ensureBaselineMarker(para,'baseline-para-marker');
-  const tb=tm.getBoundingClientRect().top;
-  const pb=pm.getBoundingClientRect().top;
-  const shift=tb-pb;
-  right.style.paddingTop=Math.max(0,shift)+'px';
-}
-
-function alignFirstBaselines(){
-  const pairs=[];
-  document.querySelectorAll('.hero').forEach(row=>{
-    pairs.push({title:row.querySelector('h1'),para:row.querySelector('.intro p'),right:row.querySelector('.intro')});
-  });
-  document.querySelectorAll('.section-grid').forEach(row=>{
-    pairs.push({title:row.querySelector('.sticky-title h2'),para:row.querySelector('.content > p'),right:row.querySelector('.content')});
-  });
-  document.querySelectorAll('.state-box').forEach(row=>{
-    pairs.push({title:row.querySelector('h2'),para:row.querySelector('.state-copy > p'),right:row.querySelector('.state-copy')});
-  });
-  document.querySelectorAll('.debian-ui-grid').forEach(row=>{
-    pairs.push({title:row.querySelector('h2'),para:row.querySelector('.debian-ui-copy > p'),right:row.querySelector('.debian-ui-copy')});
-  });
-  pairs.forEach(p=>alignPair(p.title,p.para,p.right));
-}
-
-let baselineResizeTimer;
-function scheduleBaselineAlign(){
-  clearTimeout(baselineResizeTimer);
-  baselineResizeTimer=setTimeout(alignFirstBaselines,80);
-}
-if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>{alignFirstBaselines();setTimeout(alignFirstBaselines,900);});}
-window.addEventListener('load',()=>{alignFirstBaselines();setTimeout(alignFirstBaselines,900);},{once:true});
-window.addEventListener('resize',scheduleBaselineAlign);
+if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.08});revealEls.forEach(el=>io.observe(el));}else{revealEls.forEach(el=>el.classList.add('visible'))}
+const metricNumber=document.querySelector('.metric-number');function runMetricCounter(){if(!metricNumber||metricNumber.dataset.counted==='1')return;metricNumber.dataset.counted='1';const target=Number(metricNumber.dataset.target||87),duration=850,start=performance.now();function tick(now){const t=Math.min(1,(now-start)/duration),eased=1-Math.pow(1-t,3);metricNumber.textContent=Math.floor(target*eased)+'+';if(t<1)requestAnimationFrame(tick);else metricNumber.textContent=target+'+'}requestAnimationFrame(tick)}if(metricNumber){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){metricNumber.textContent=(metricNumber.dataset.target||87)+'+'}else if('IntersectionObserver' in window){const metricObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){runMetricCounter();metricObserver.disconnect()}})},{threshold:.35});metricObserver.observe(metricNumber)}else runMetricCounter()}
+const catafViewport=document.getElementById('catafViewport'),catafImage=document.getElementById('catafScrollImage');let catafStarted=false;function catafEase(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}function startCatAFAuto(){if(catafStarted||!catafViewport||!catafImage)return;catafStarted=true;if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){catafImage.style.transform='translate3d(0,0,0)';return}const duration=86000,topPause=.075,bottomPause=.075;let startTime=null;function frame(now){if(startTime===null)startTime=now;const cycle=((now-startTime)%duration)/duration,travel=Math.max(0,catafImage.getBoundingClientRect().height-catafViewport.getBoundingClientRect().height);let progress;if(cycle<topPause)progress=0;else if(cycle<.5-bottomPause){const local=(cycle-topPause)/(.5-bottomPause-topPause);progress=catafEase(local)}else if(cycle<.5+bottomPause)progress=1;else if(cycle<1-topPause){const local=(cycle-(.5+bottomPause))/((1-topPause)-(.5+bottomPause));progress=1-catafEase(local)}else progress=0;catafImage.style.transform=`translate3d(0,${-(travel*progress)}px,0)`;requestAnimationFrame(frame)}requestAnimationFrame(frame)}function checkCatAFFullyVisible(){if(catafStarted||!catafViewport)return;const r=catafViewport.getBoundingClientRect(),vh=window.innerHeight||document.documentElement.clientHeight;if(r.top>=0&&r.bottom<=vh)startCatAFAuto()}if(catafImage){if(catafImage.complete)checkCatAFFullyVisible();else catafImage.addEventListener('load',checkCatAFFullyVisible,{once:true})}window.addEventListener('scroll',checkCatAFFullyVisible,{passive:true});window.addEventListener('resize',checkCatAFFullyVisible);window.addEventListener('load',checkCatAFFullyVisible,{once:true});checkCatAFFullyVisible();
+function ensureBaselineMarker(el,cls){if(!el)return null;let marker=el.querySelector(':scope > .'+cls);if(marker)return marker;marker=document.createElement('span');marker.className=cls;marker.setAttribute('aria-hidden','true');marker.style.cssText='display:inline-block;width:0;height:0;padding:0;margin:0;border:0;vertical-align:baseline;';el.insertBefore(marker,el.firstChild);return marker}function alignPair(title,para,right){if(!title||!para||!right)return;right.style.paddingTop='0px';if(window.innerWidth<901)return;const tm=ensureBaselineMarker(title,'baseline-title-marker'),pm=ensureBaselineMarker(para,'baseline-para-marker'),tb=tm.getBoundingClientRect().top,pb=pm.getBoundingClientRect().top,shift=tb-pb;right.style.paddingTop=Math.max(0,shift)+'px'}function alignFirstBaselines(){const pairs=[];document.querySelectorAll('.hero').forEach(row=>pairs.push({title:row.querySelector('h1'),para:row.querySelector('.intro p'),right:row.querySelector('.intro')}));document.querySelectorAll('.section-grid').forEach(row=>pairs.push({title:row.querySelector('.sticky-title h2'),para:row.querySelector('.content > p'),right:row.querySelector('.content')}));document.querySelectorAll('.state-box').forEach(row=>pairs.push({title:row.querySelector('h2'),para:row.querySelector('.state-copy > p'),right:row.querySelector('.state-copy')}));document.querySelectorAll('.debian-ui-grid').forEach(row=>pairs.push({title:row.querySelector('h2'),para:row.querySelector('.debian-ui-copy > p'),right:row.querySelector('.debian-ui-copy')}));pairs.forEach(p=>alignPair(p.title,p.para,p.right))}let baselineResizeTimer;function scheduleBaselineAlign(){clearTimeout(baselineResizeTimer);baselineResizeTimer=setTimeout(alignFirstBaselines,80)}if(document.fonts&&document.fonts.ready){document.fonts.ready.then(()=>{alignFirstBaselines();setTimeout(alignFirstBaselines,900)})}window.addEventListener('load',()=>{alignFirstBaselines();setTimeout(alignFirstBaselines,900)},{once:true});window.addEventListener('resize',scheduleBaselineAlign);
 </script>
 </body>
 </html>
