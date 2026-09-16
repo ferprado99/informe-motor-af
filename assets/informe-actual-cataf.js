@@ -3,6 +3,10 @@
   if (!image || image.dataset.catafEnhanced === '1') return;
   image.dataset.catafEnhanced = '1';
 
+  const style = document.createElement('style');
+  style.textContent = '.cataf-scroll-frame{width:100%;border:1px solid rgba(32,38,53,.13);border-radius:12px;overflow:hidden;background:#ebe9e3}.cataf-viewport{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#fff}.cataf-scroll-image{position:absolute!important;top:0;left:0;width:100%!important;height:auto!important;max-width:none!important;display:block;border:0!important;border-radius:0!important;will-change:transform;transform:translate3d(0,0,0);animation:none!important;transition:none!important}';
+  document.head.appendChild(style);
+
   const frame = document.createElement('div');
   frame.className = 'cataf-scroll-frame';
   const viewport = document.createElement('div');
